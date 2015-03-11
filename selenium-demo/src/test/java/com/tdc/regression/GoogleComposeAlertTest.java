@@ -25,7 +25,7 @@ public class GoogleComposeAlertTest {
 	WebDriverWait wait;
 	Robot rb ;
 
-	@Given("^I login gmail$")
+	@Given("^I login gmail by using username \"(.*?)\" and password \"(.*?)\"$")
 	@Test
 	public void i_login_gmail_by_using_username_and_password(String username, String password) throws Throwable  {
 	
@@ -39,7 +39,6 @@ public class GoogleComposeAlertTest {
 		    driver.findElement(By.id("Passwd")).clear();
 		    driver.findElement(By.id("Passwd")).sendKeys(password);
 		    driver.findElement(By.id("signIn")).click();
-		    throw new PendingException();		 
 	}
 
 	@When("^I click COMPOSE and click Attch files button$")

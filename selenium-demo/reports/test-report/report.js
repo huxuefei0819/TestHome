@@ -45,24 +45,49 @@ formatter.step({
   "name": "I am able to see an error message",
   "keyword": "Then "
 });
-formatter.match({});
-formatter.result({
-  "status": "undefined"
+formatter.match({
+  "arguments": [
+    {
+      "val": "goldenkeytest",
+      "offset": 33
+    },
+    {
+      "val": "goldenkeytest222",
+      "offset": 62
+    }
+  ],
+  "location": "GoogleComposeAlertTest.i_login_gmail_by_using_username_and_password(String,String)"
 });
-formatter.match({});
 formatter.result({
-  "status": "undefined"
+  "duration": 6164035611,
+  "status": "passed"
 });
-formatter.match({});
-formatter.result({
-  "status": "undefined"
+formatter.match({
+  "location": "GoogleComposeAlertTest.i_click_COMPOSE()"
 });
-formatter.match({});
 formatter.result({
-  "status": "undefined"
+  "duration": 2228493935,
+  "status": "passed"
 });
-formatter.match({});
+formatter.match({
+  "location": "GoogleComposeAlertTest.i_click_Attach_files_to_add_a_local_file()"
+});
 formatter.result({
-  "status": "undefined"
+  "duration": 8309142676,
+  "status": "passed"
+});
+formatter.match({
+  "location": "GoogleComposeAlertTest.i_click_send()"
+});
+formatter.result({
+  "duration": 97642770,
+  "status": "passed"
+});
+formatter.match({
+  "location": "GoogleComposeAlertTest.i_am_able_to_see_an_error_message()"
+});
+formatter.result({
+  "duration": 1938264599,
+  "status": "passed"
 });
 });
