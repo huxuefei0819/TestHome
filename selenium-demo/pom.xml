@@ -1,0 +1,157 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.tdc</groupId>
+	<artifactId>testCategoriesExample</artifactId>
+	<version>0.0.1</version>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- Set a default filename to use - if none is specified, this is the default -->
+		<default.filename>defaultTestDataFile.xml</default.filename>
+	</properties>
+
+	<dependencies>
+		<dependency>
+	<groupId>net.sourceforge.jexcelapi</groupId>
+	<artifactId>jxl</artifactId>
+	<version>2.6.12</version>
+</dependency>
+		<dependency>
+	<groupId>org.seleniumhq.selenium</groupId>
+	<artifactId>selenium-java</artifactId>
+	<version>2.44.0</version>
+</dependency>
+  <dependency>
+	<groupId>org.seleniumhq.selenium</groupId>
+	<artifactId>selenium-server</artifactId>
+	<version>2.44.0</version>
+</dependency>
+ <dependency>
+	<groupId>org.seleniumhq.selenium</groupId>
+	<artifactId>selenium-htmlunit-driver</artifactId>
+	<version>2.44.0</version>
+</dependency>
+<dependency>
+	<groupId>org.seleniumhq.selenium</groupId>
+	<artifactId>selenium-firefox-driver</artifactId>
+	<version>2.44.0</version>
+</dependency>
+<dependency>
+	<groupId>org.seleniumhq.selenium</groupId>
+	<artifactId>selenium-api</artifactId>
+	<version>2.44.0</version>
+</dependency>
+<dependency>
+	<groupId>org.seleniumhq.selenium</groupId>
+	<artifactId>selenium-chrome-driver</artifactId>
+	<version>2.44.0</version>
+</dependency>
+<dependency>
+	<groupId>org.seleniumhq.selenium</groupId>
+	<artifactId>selenium-support</artifactId>
+	<version>2.44.0</version>
+</dependency>
+<dependency>
+	<groupId>org.seleniumhq.selenium</groupId>
+	<artifactId>selenium-remote-driver</artifactId>
+	<version>2.44.0</version>
+</dependency>
+<dependency>
+	<groupId>org.seleniumhq.selenium</groupId>
+	<artifactId>selenium-ie-driver</artifactId>
+	<version>2.44.0</version>
+</dependency>
+<dependency>
+  <groupId>junit</groupId>
+  <artifactId>junit</artifactId>
+  <version>4.12</version>
+  <scope>test</scope>
+</dependency>
+<dependency>
+	<groupId>info.cukes</groupId>
+	<artifactId>cucumber-junit</artifactId>
+	<version>1.2.2</version>
+</dependency>
+<dependency>
+	<groupId>info.cukes</groupId>
+	<artifactId>cucumber-java</artifactId>
+	<version>1.2.2</version>
+</dependency>
+
+	</dependencies>
+	<build>
+		<testResources>
+	      <testResource>
+	        <directory>src/test/resources</directory>
+	      </testResource>
+	    </testResources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.12.4</version>
+				<!-- This config tag does 2 things: -->
+				<!-- 1) creates testDataFileName system property, which we query for the correct filename -->
+				<!-- 2) Sets testDataFileName to be our default filename, so it's available for all tests -->
+				<configuration>
+					<systemPropertyVariables>
+						<testDataFilename>${default.filename}</testDataFilename>
+					</systemPropertyVariables>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>	
+		<profile>
+			<id>regressionTests</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<!-- This config variable points to the RegressionTests interface -->
+							<!-- All tests/classes to run w/this interface must be tagged w/@Category -->
+							<groups>com.tdc.groups.RegressionTests</groups>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+			<properties>
+				<!-- Setting the default filename overrides defaultTestDataFile.xml -->
+				<default.filename>regressionTestDataFile.xml</default.filename>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>smokeTests</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<groups>com.tdc.groups.SmokeTests</groups>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+			<properties>
+				<!-- Note: Commenting this out leads to defaultTestDataFile.xml to be used -->
+				<!-- <default.filename>smokeTestDataFile.xml</default.filename> -->
+			</properties>
+		</profile>		
+	</profiles>
+</project>

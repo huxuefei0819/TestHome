@@ -1,0 +1,10 @@
+<test>
+	<case id=1>
+		<param>100</param>
+		<expected>10000</expected>
+	</case>
+	<case id=2>
+		<param>99</param>
+		<expected>9900</expected>
+	</case>
+</test>
