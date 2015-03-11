@@ -25,8 +25,7 @@ public class GoogleComposeAlertTest {
 	WebDriverWait wait;
 	Robot rb ;
 
-	@Given("^I login gmail by using username \"(.*?)\" and password \"(.*?)\"$")
-	@Test
+	@Given("^I login gmail by using username \"([^\"]*)\" and password \"([^\"]*)\"$")
 	public void i_login_gmail_by_using_username_and_password(String username, String password) throws Throwable  {
 	
 			driver = new ChromeDriver();
@@ -42,14 +41,12 @@ public class GoogleComposeAlertTest {
 	}
 
 	@When("^I click COMPOSE and click Attch files button$")
-@Test
 	public void i_click_COMPOSE() throws Throwable {
 		  driver.findElement(By.xpath("/html/body/div[7]/div[3]/div/div[2]/div[1]/div[1]/div[1]/div[2]/div/div/div[1]/div/div")).click();	 
-		  driver.findElement(By.xpath("//div[@id=':i1']")).click();
+		  driver.findElement(By.xpath("//div[@id=':hx']")).click();
 	}
 
 	@When("^I add a local file$")
-	@Test
 	public void i_click_Attach_files_to_add_a_local_file() throws Throwable {
 		  rb = new Robot();		 
 		  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -111,13 +108,11 @@ public class GoogleComposeAlertTest {
 	}
 
 	@When("^I click send$")
-@Test
 	public void i_click_send() throws Throwable {
-		driver.findElement(By.xpath("//div[@id=':fz']")).click();	
+		driver.findElement(By.xpath("//div[@id=':fu']")).click();	
 	}
 
 	@Then("^I am able to see an error message$")
-	@Test
 	public void i_am_able_to_see_an_error_message() throws Throwable {
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[@class='Kj-JD']")));
 		  System.out.println(driver.findElement(By.xpath("/html/body/div[@class='Kj-JD']/div[2]")).getText());
