@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="2" failures="0" name="com.tdc.smoke.HomePageSmokeTest" time="0" errors="0" skipped="0">
+<testsuite tests="6" failures="0" name="com.tdc.regression.GoogleCompseAlertRunnerTest" time="0.002" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_31\jre\bin"/>
@@ -61,6 +61,10 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.tdc.smoke.HomePageSmokeTest" name="testHomepageContainsLogo" time="0"/>
-  <testcase classname="com.tdc.smoke.HomePageSmokeTest" name="testHomePageAvailable" time="0"/>
+  <testcase classname="Scenario: compose gmail with a file" name="Given I login gmail by using username &quot;goldenkeytest&quot; and password &quot;goldenkeytest222&quot;" time="0"/>
+  <testcase classname="Scenario: compose gmail with a file" name="When I click COMPOSE and click Attch files button" time="0"/>
+  <testcase classname="Scenario: compose gmail with a file" name="And I add a local file" time="0"/>
+  <testcase classname="Scenario: compose gmail with a file" name="And I click send" time="0"/>
+  <testcase classname="Scenario: compose gmail with a file" name="Then I am able to see an error message" time="0"/>
+  <testcase classname="Scenario: compose gmail with a file" name="Scenario: compose gmail with a file" time="0.002"/>
 </testsuite>

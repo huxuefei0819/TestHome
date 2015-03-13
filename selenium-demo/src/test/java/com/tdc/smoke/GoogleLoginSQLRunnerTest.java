@@ -1,5 +1,4 @@
-package com.tdc.regression;
-
+package com.tdc.smoke;
 import org.junit.runner.RunWith;
 
 import cucumber.api.CucumberOptions;
@@ -9,9 +8,7 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 format={"pretty","html:reports/test-report"}, 
 features="src/test/resources",
-tags= "@compose")
-public class GoogleCompseAlertRunnerTest {
+tags= "@sql")
+public class GoogleLoginSQLRunnerTest {
+
 }
-
-
-
